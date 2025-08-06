@@ -1,3 +1,166 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Commerce Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">My E-Commerce</h1>
+      <nav class="nav">
+        <button id="userPortalBtn" onclick="switchPortal('user')">User</button>
+        <button id="adminPortalBtn" onclick="switchPortal('admin')">Admin</button>
+        <div id="cartIcon" class="cart-icon" onclick="openCart()">
+          <i class="fas fa-shopping-cart"></i>
+          <span id="cartBadge" class="cart-badge">0</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- User Portal -->
+    <section id="userPortal" class="portal-section">
+      <div class="filters">
+        <input type="text" id="searchInput" placeholder="Search products...">
+        <select id="categoryFilter"></select>
+        <select id="sortBy">
+          <option value="name">Sort by Name</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+        </select>
+      </div>
+      <div id="productsGrid" class="product-grid"></div>
+    </section>
+
+    <!-- Admin Portal -->
+    <section id="adminPortal" class="portal-section hidden">
+      <div class="admin-tabs">
+        <button id="productsTab" onclick="switchAdminTab('products')">Products</button>
+        <button id="ordersTab" onclick="switchAdminTab('orders')">Orders</button>
+      </div>
+      <div class="admin-stats">
+        <div>Total Products: <span id="totalProducts">0</span></div>
+        <div>Total Orders: <span id="totalOrders">0</span></div>
+        <div>Total Revenue: <span id="totalRevenue">$0.00</span></div>
+        <div>Categories: <span id="totalCategories">0</span></div>
+      </div>
+      <div id="productsManagement">
+        <button onclick="openProductModal()">Add Product</button>
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsTable"></tbody>
+        </table>
+      </div>
+      <div id="ordersManagement" class="hidden">
+        <select id="orderStatusFilter">
+          <option value="">All Statuses</option>
+          <option value="pending">Pending</option>
+          <option value="processing">Processing</option>
+          <option value="shipped">Shipped</option>
+          <option value="delivered">Delivered</option>
+        </select>
+        <div id="ordersList"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart Modal -->
+  <div id="cartModal" class="modal">
+    <div class="modal-content">
+      <h2>Your Cart</h2>
+      <div id="cartItems"></div>
+      <div class="cart-footer">
+        <p>Total: $<span id="cartTotal">0.00</span></p>
+        <button onclick="clearCart()">Clear Cart</button>
+        <button onclick="checkout()">Checkout</button>
+      </div>
+      <button onclick="closeModal('cartModal')">Close</button>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkoutModal" class="modal">
+    <div class="modal-content">
+      <h2>Checkout</h2>
+      <form id="checkoutForm">
+        <input type="text" id="customerName" placeholder="Name" required>
+        <input type="email" id="customerEmail" placeholder="Email" required>
+        <input type="tel" id="customerPhone" placeholder="Phone" required>
+        <textarea id="customerAddress" placeholder="Address" required></textarea>
+        <p>Total: $<span id="checkoutTotal">0.00</span></p>
+        <button type="submit">Place Order</button>
+      </form>
+      <button onclick="closeModal('checkoutModal')">Close</button>
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div id="productModal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle">Add/Edit Product</h2>
+      <form id="productForm">
+        <input type="hidden" id="productId">
+        <input type="text" id="productName" name="productName" placeholder="Product Name" required>
+        <textarea id="productDescription" name="productDescription" placeholder="Description" required></textarea>
+        <input type="number" id="productPrice" name="productPrice" placeholder="Price" required>
+        <input type="text" id="productCategory" name="productCategory" placeholder="Category" required>
+        <input type="number" id="productStock" name="productStock" placeholder="Stock" required>
+        <input type="url" id="productImage" name="productImage" placeholder="Image URL">
+        <button type="submit">Save</button>
+      </form>
+      <button onclick="closeModal('productModal')">Close</button>
+    </div>
+  </div>
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-container">
+    <div class="footer-section about">
+      <h2>ColorStyle Store</h2>
+      <p>Your one-stop shop for modern fashion and unique styles. We bring you premium products at affordable prices.</p>
+    </div>
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 ColorStyle Store. All rights reserved.
+  </div>
+</footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
